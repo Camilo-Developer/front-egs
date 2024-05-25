@@ -1,0 +1,55 @@
+/*Nuevos estilos*/
+.img-companies-admin{
+    border-radius: 5px!important;
+}
+.info-box-icon{
+    border: none;
+}
+.new-mas{
+    cursor: pointer;
+    color: black
+}
+.buq-company{
+    width: 150px;
+}
+.buq-menu{
+    width: 150px;
+}
+.buq-pays{
+    width: 200px;
+}
+.buq-preorders{
+    width: 250px;
+}
+.buq-products{
+    width: 150px;
+}
+.buq-role{
+    width: 150px;
+}
+.buq-salereports{
+    width: 200px;
+}
+.btn-company-danger{
+    margin-right: 7px;
+}
+.color-dashboard-div-admin{
+    color: #FFFFFF!important;
+}
+.btn-preorders-entregadas{
+    margin-left: 21px;
+}
+.descricption-product{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.card-edit-product{
+    width: 18rem!important;
+}
+.img-edit-product{
+    max-height: 300px;
+}
+.card-show-product{
+    width: 20rem!important;
+}
