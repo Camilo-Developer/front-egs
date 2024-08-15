@@ -1,0 +1,106 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Configuración del perfil</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a routerLink="/admin/dashboard">Inicio</a></li>
+                        <li class="breadcrumb-item active">Configuración del perfil</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="container-fluid" >
+            <div class="card card-default color-palette-box">
+                <div class="card-body">
+                    <div class="row">
+                        <!-- informacion de perfil -->
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-5">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <div class="div-wimed-special">
+                                            <p class="title-special">Información del perfil</p>
+                                            <p>Actualice la información del perfil y la dirección de correo electrónico de su cuenta.</p>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-7">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <form [formGroup]="profileForm" >
+                                            <div class="row">
+                                                    <div class="col-12 col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="name">Nombres:</label>
+                                                            <input type="text" class="form-control" id="name" placeholder="Nombres" formControlName="name">
+                                                        </div>
+                                                        @if (profileForm.controls['name'].touched && profileForm.controls['name'].invalid  || profileForm.controls['name'].dirty) {
+                                                            @if (profileForm.controls['name'].errors?.['required']) {
+                                                                <p class="text-danger">El o los nombres son requeridos</p>
+                                                            }
+                                                        }
+                                                    </div>
+                                                    <div class="col-12 col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="lastname">Apellidos:</label>
+                                                            <input type="text" class="form-control" id="lastname" placeholder="Apellidos" formControlName="lastname">
+                                                        </div>
+                                                        @if (profileForm.controls['lastname'].touched && profileForm.controls['lastname'].invalid  || profileForm.controls['lastname'].dirty) {
+                                                            @if (profileForm.controls['lastname'].errors?.['required']) {
+                                                                <p class="text-danger">Los apellidos son requeridos</p>
+                                                            }
+                                                        }
+                                                    </div>
+                                                    <div class="col-12 col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="loginname">Nombre de acceso:</label>
+                                                            <input type="text" class="form-control" id="loginname" placeholder="Nombre de acceso" formControlName="loginname">
+                                                        </div>
+                                                        @if (profileForm.controls['loginname'].touched && profileForm.controls['loginname'].invalid  || profileForm.controls['loginname'].dirty) {
+                                                            @if (profileForm.controls['loginname'].errors?.['required']) {
+                                                                <p class="text-danger">El nombre de inicio es requerido</p>
+                                                            }
+                                                        }
+                                                    </div>
+                                                    <div class="col-12 col-md-8">
+                                                        <div class="form-group">
+                                                            <label for="email">Correo eléctronico:</label>
+                                                            <input type="email" class="form-control" id="email" placeholder="Correo eléctronico" formControlName="email">
+                                                        </div>
+                                                        @if (profileForm.controls['email'].touched && profileForm.controls['email'].invalid  || profileForm.controls['email'].dirty) {
+                                                            @if (profileForm.controls['email'].errors?.['required']) {
+                                                                <p class="text-danger">El correo es requerido</p>
+                                                            }
+                                                        }
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="d-flex justify-content-end">
+                                                            <button type="submit" class="btn btn-subm-special" (click)="updateProfile()">
+                                                                Actualizar
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <app-password-update/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

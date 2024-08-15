@@ -1,0 +1,31 @@
+<div>
+    <div class="content-wrapper">
+      <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Panel administrativo</h1>
+                </div>
+                
+            </div>
+        </div>
+      </section>
+      <section class="content">
+        <div class="container-fluid" >
+          <div class="card card-default color-palette-box">
+            <h5 class="card-header">Detalle del usuario</h5>
+            <div class="card-body">
+              <h5 class="card-title">Nombre: {{userName}} {{userLastname}}</h5>
+              <br>
+              <h5 class="card-title">Correo: {{userEmail}}</h5>
+              <br>
+              <h5 class="card-title">rol: {{userRole}}</h5><br>
+              <h5 class="card-title">Creado : {{ userCreate }}</h5><br>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <app-footer/>    
+  </div>
+    

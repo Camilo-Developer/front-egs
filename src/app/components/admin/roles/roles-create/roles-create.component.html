@@ -1,0 +1,57 @@
+<div>
+    <div class="content-wrapper">
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mt-3 mb-2">
+            <div class="col-sm-6">
+              <h1>Creación del rol</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item">
+                  <a class="a-text-jc" routerLink="/admin/dashboard">Inicio</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a class="a-text-jc" routerLink="/admin/roles">Listado de roles</a>
+                  </li>
+                <li class="breadcrumb-item active">Creación del rol</li>
+              </ol>
+            </div>
+            <div class="mt-2 mb-3 hr-sp-js"></div>
+          </div>
+        </div>
+      </section>
+      <section class="content">
+        <div class="container-fluid">
+          <div class="card card-default color-palette-box">
+            <div class="card-body">
+                <form [formGroup]="roleForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="name">Nombre del rol:</label>
+                    <input type="text" formControlName="name" class="form-control" id="name" placeholder="Nombre del rol">
+                </div>
+                <label class="mt-1 mb-2">Seleccione los permisos para este rol:</label>
+                @for (permission of permissions; track permission.id;let i = $index) {
+                    <div class="custom-control custom-checkbox mt-2">
+                        <input class="custom-control-input"  type="checkbox" id="{{permission.id}}" value="{{permission.id}}" (change)="onPermissionChange($event)">
+                        <label for="{{permission.id}}" class="custom-control-label">{{permission.description}}</label>
+                    </div>
+                }
+                <div class="mt-3">
+                    <div class="row">
+                        <div class="col-6">
+                            <button class="btn btn-success" type="submit">Crear rol</button>
+                        </div>
+                        <div class="col-6 d-flex justify-content-end">
+                            <a class="btn btn-danger" routerLink="/admin/roles">volver</a>
+                        </div>
+                    </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <app-footer />
+  </div>

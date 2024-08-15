@@ -1,0 +1,64 @@
+<div class="container-img-login">
+    <div class="row row-spe">
+      <div class="col-8">
+        <div class="card">
+          <div class="card-body mb-3">
+            <div class="d-flex justify-content-center mt-3 mb-5">
+              <img class="imgLogo" src="assets/admin-lte3/img/logo-egs.png" alt="logo">
+            </div>
+              <p class="text-danger">{{message}}</p>
+              <form [formGroup]="loginForm">
+                  <div class="row">
+                    <div class="col-12">
+                      <label class="text-color" for="loginname">Correo electrónico o Nombre de acceso:</label>
+                    </div>
+                    <div class="col-12">
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="loginname" placeholder="Correo eléctrónico o nombre de acceso" formControlName="loginname">
+                        <div class="input-group-append">
+                          <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                          </div>
+                        </div>
+                      </div>
+                      @if (loginForm.controls['loginname'].touched && loginForm.controls['loginname'].invalid  || loginForm.controls['loginname'].dirty) {
+                        @if (loginForm.controls['loginname'].errors?.['required']) {
+                          <p class="text-danger">El correo electrónico o el nombre de acceso es obligatorio.</p>
+            
+                        }
+                      }
+                    </div>
+  
+                    <div class="col-12">
+                      <label class="text-color" for="password">Contraseña:</label>
+                    </div>
+  
+                    <div class="col-12">
+                      <div class="input-group mb-3">
+                        <input type="password" class="form-control" id="password" placeholder="Contrasela" formControlName="password">
+                        <div class="input-group-append">
+                          <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                          </div>
+                        </div>
+                      </div>
+                      @if (loginForm.controls['password'].touched && loginForm.controls['password'].invalid || loginForm.controls['password'].dirty) {
+                        @if (loginForm.controls['password'].errors?.['required']) {
+                          <p class="text-danger">La contraseña es obligatoria.</p>
+            
+                        }
+                      }
+                    </div>
+  
+                    <div class="col-12">
+                      <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-login btn-block" (click)="onSubmit()">Iniciar sesión</button>
+                      </div>
+                    </div>
+                  </div>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

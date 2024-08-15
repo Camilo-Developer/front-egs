@@ -1,0 +1,124 @@
+<div>
+    <div class="content-wrapper">
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mt-3 mb-2">
+            <div class="col-sm-6">
+              <h1>Listado de productos</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item">
+                  <a class="a-text-jc" routerLink="/admin/dashboard">Inicio</a>
+                </li>
+                <li class="breadcrumb-item active">Listado de productos</li>
+              </ol>
+            </div>
+            <div class="mt-2 mb-3 hr-sp-js"></div>
+            <div class="col-12">
+              <button class="btn btn-success" data-toggle="modal" (click)="openModal()">
+                <i class="fa fa-plus"></i> Crear producto
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="content">
+        <div class="container-fluid">
+          <div class="card card-default color-palette-box">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th class="text-center">ID</th>
+                      <th class="text-center">Nombre</th>
+                      <th class="text-center">Versión</th>
+                      <th class="text-center">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (product of products; track product.id) {
+                      <tr>
+                        <td class="text-center">{{ product.id }}</td>
+                        <td class="text-center">{{ product.name }}</td>
+                        <td class="text-center">{{ product.version }}</td>
+                        <td class="text-center">
+                          <div class="">
+                            <button class="btn-jc" type="button" (click)="editProduct(product)">
+                              <i class="fa fa-edit"></i>
+                            </button>
+                            <button class="btn-jc mx-3" type="button" (click)="deleteProduct(product.id)">
+                              <i class="fa fa-trash"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    }
+                    @empty {
+                      <tr>
+                        <td class="text-center" colspan="3">
+                          No hay productos disponibles.
+                        </td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="modal fade show" id="updateCreate" tabindex="-1" role="dialog" aria-labelledby="updateCreateLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="updateCreateLabel">Creación del producto</h5>
+            <button type="button" (click)="closeModal()" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form [formGroup]="productForm">
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group mb-3">
+                    <label for="name">Nombre:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Nombre del producto"
+                      formControlName="name" />
+                  </div>
+                  @if (productForm.controls['name'].touched && productForm.controls['name'].invalid || productForm.controls['name'].dirty) { 
+                    @if(productForm.controls['name'].errors?.['required']) {
+                      <p class="text-danger">El nombre es obligatorio.</p>
+                    } 
+                  }
+                  <div class="form-group">
+                    <label for="version">Versión</label>
+                    <input type="text" class="form-control" id="version" placeholder="Versión del producto"
+                    formControlName="version" />
+                  </div>
+                  @if (productForm.controls['version'].touched &&
+                  productForm.controls['version'].invalid ||
+                  productForm.controls['version'].dirty) { @if
+                  (productForm.controls['version'].errors?.['required']) {
+                  <p class="text-danger">La versión es obligatoria.</p>
+                  } }
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="closeModal()" data-dismiss="modal">
+                Cerrar
+              </button>
+              <button type="button" class="btn btn-success" (click)="createProduct()">
+                {{ isEditMode ? 'Actualizar producto' : 'Crear producto' }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <app-footer />
+  </div>

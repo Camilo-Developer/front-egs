@@ -1,0 +1,125 @@
+<div>
+  <div class="content-wrapper">
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mt-3 mb-2">
+          <div class="col-sm-6">
+            <h1>Listado de estados</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item">
+                <a class="a-text-jc" routerLink="/admin/dashboard">Inicio</a>
+              </li>
+              <li class="breadcrumb-item active">Listado de estados</li>
+            </ol>
+          </div>
+          <div class="mt-2 mb-3 hr-sp-js"></div>
+          <div class="col-12">
+            <button class="btn btn-success" data-toggle="modal" (click)="openModal()">
+              <i class="fa fa-plus"></i> Crear estado
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="card card-default color-palette-box">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover text-nowrap">
+                <thead>
+                  <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (state of states; track state.id) {
+                    <tr>
+                      <td class="text-center">{{ state.id }}</td>
+                      <td class="text-center">{{ state.name }}</td>
+                      <td class="text-center">
+                        <div class="">
+                          <button class="btn-jc" type="button" (click)="editState(state)">
+                            <i class="fa fa-edit"></i>
+                          </button>
+                          <button class="btn-jc mx-3" type="button" (click)="deleteState(state.id)">
+                            <i class="fa fa-trash"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  }
+                  @empty {
+                    <tr>
+                      <td class="text-center" colspan="3">
+                        No hay estados disponibles.
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="modal fade show" id="stateCreate" tabindex="-1" role="dialog" aria-labelledby="stateCreateLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="stateCreateLabel">Creación del estado</h5>
+          <button type="button" (click)="closeModal()" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="stateForm">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group mb-3">
+                  <label for="name">Nombre:</label>
+                  <input type="text" class="form-control" id="name" placeholder="Nombre del estado"
+                    formControlName="name" />
+                </div>
+                @if (stateForm.controls['name'].touched && stateForm.controls['name'].invalid || stateForm.controls['name'].dirty) { 
+                  @if(stateForm.controls['name'].errors?.['required']) {
+                    <p class="text-danger">El nombre del estado es obligatorio.</p>
+                  } 
+                }
+                <div class="form-group">
+                  <label for="type_state">Tipo de estado</label>
+                  <select id="type_state" formControlName="type_state" class="custom-select">
+                    <option value="" selected disabled>Seleccionar</option>
+                    <option value="1">Activo</option>
+                    <option value="2">No activo</option>
+                  </select>
+                </div>
+                @if (stateForm.controls['type_state'].touched &&
+                stateForm.controls['type_state'].invalid ||
+                stateForm.controls['type_state'].dirty) { @if
+                (stateForm.controls['type_state'].errors?.['required']) {
+                <p class="text-danger">El tipo de estado es obligatorio.</p>
+                } }
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="closeModal()" data-dismiss="modal">
+              Cerrar
+            </button>
+            <button type="button" class="btn btn-success" (click)="createState()">
+              {{ isEditMode ? 'Actualizar estado' : 'Crear estado' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <app-footer />
+</div>

@@ -1,0 +1,15 @@
+.div-wimed-special{
+    width: 78%;
+    margin-top:10%;
+}
+.title-special{
+    font-weight: bold;
+    font-size: 20px;
+}
+.btn-subm-special{
+    background: #009636;
+    color: #ffffff;
+}
+.btn-subm-special:hover{
+    background: #0a8136;
+}

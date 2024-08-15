@@ -1,0 +1,57 @@
+.cursor-spec{
+    cursor: pointer;
+}
+.bg-nav-spe{
+    background: #009636;
+}
+.icon-color{
+    color: #ffffff!important;
+}
+.navbar-color-spe{
+    background-color: #009636;
+}
+.color-aside-spe{
+    background-color: #f7f2f2;
+}
+.cont-img-div-aside{
+    width:80%;
+    height:auto;
+    margin-top: 13px;
+    margin-left: 8%;
+}
+.cont-img-div-aside img{
+    width:100%;
+    height:auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.border-b-jc{
+    border-bottom: 3px solid #009636!important;
+}
+.text-green-jc{
+    color: #009636;
+}
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active{
+    background-color: #009636;
+    color: #fff!important;
+}
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active>.text-green-jc, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active{
+    color: #fff!important;
+}
+
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link:hover{
+    color: #fff!important;
+    background-color: #009636;
+}
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link:hover>.text-green-jc{
+    color: #fff!important;
+}
+
+.sidebar-dark-primary .nav-sidebar>.nav-item>.forms>.nav-link:hover{
+    background-color: #009636;
+    color: #fff!important;
+}
+.sidebar-dark-primary .nav-sidebar>.nav-item>.forms>.nav-link:hover>.text-green-jc{
+    color: #fff!important;
+}

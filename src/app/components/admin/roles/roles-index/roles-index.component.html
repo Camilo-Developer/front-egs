@@ -1,0 +1,72 @@
+<div>
+    <div class="content-wrapper">
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mt-3 mb-2">
+            <div class="col-sm-6">
+              <h1>Listado de roles</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item">
+                  <a class="a-text-jc" routerLink="/admin/dashboard">Inicio</a>
+                </li>
+                <li class="breadcrumb-item active">Listado de roles</li>
+              </ol>
+            </div>
+            <div class="mt-2 mb-3 hr-sp-js"></div>
+            <div class="col-12">
+              <a routerLink="/admin/roles/create" class="btn btn-success" data-toggle="modal" >
+                <i class="fa fa-plus"></i> Crear rol
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="content">
+        <div class="container-fluid">
+          <div class="card card-default color-palette-box">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th class="text-center">ID</th>
+                      <th class="text-center">Nombre</th>
+                      <th class="text-center">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (role of roles; track role.id) {
+                      <tr>
+                        <td class="text-center">{{ role.id }}</td>
+                        <td class="text-center">{{ role.name }}</td>
+                        <td class="text-center">
+                          <div class="">
+                            <a class="btn-jc" routerLink="/admin/roles/update/{{role.id}}" >
+                              <i class="fa fa-edit"></i>
+                            </a>
+                            <button class="btn-jc mx-3" type="button"  (click)="deleteRole(role.id)">
+                              <i class="fa fa-trash"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    }
+                    @empty {
+                      <tr>
+                        <td class="text-center" colspan="3">
+                          No hay estados disponibles.
+                        </td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <app-footer />
+  </div>
