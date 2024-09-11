@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://backendegs.conticoches.com/public/api/'
+    apiUrl: 'https://prueba-backend-pro-actu.test/api/'
 };

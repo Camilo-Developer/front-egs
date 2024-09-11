@@ -26,7 +26,7 @@ import { RolesIndexComponent } from './components/admin/roles/roles-index/roles-
 import { RolesCreateComponent } from './components/admin/roles/roles-create/roles-create.component';
 import { RolesUpdateComponent } from './components/admin/roles/roles-update/roles-update.component';
 import { RolesShowComponent } from './components/admin/roles/roles-show/roles-show.component';
-
+import { ExcelIndexComponent } from './components/admin/excel/excel-index/excel-index.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -40,6 +40,7 @@ export const routes: Routes = [
   { path: 'admin/roles/create',   providers: [RolesService,AuthService,HttpClient], component: RolesCreateComponent, canActivate:[authGuard]},
   { path: 'admin/roles/update/:id',   providers: [RolesService,AuthService,HttpClient], component: RolesUpdateComponent, canActivate:[authGuard]},
   { path: 'admin/roles/show',   providers: [RolesService,AuthService,HttpClient], component: RolesShowComponent, canActivate:[authGuard]},
+  { path: 'admin/export',   providers: [AuthService,HttpClient], component: ExcelIndexComponent},
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
